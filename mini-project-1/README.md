@@ -137,4 +137,5 @@ Models Trained
 ## 👥 Team Member Contributions
 
 **Jacky Chen:** Data preprocessing, feature engineering, model implementation, results analysis, report writing
+
 **Alex Liu(Hsuan chen):** Data preprocessing, Exploratory data analysis, feature engineering, results analysis
