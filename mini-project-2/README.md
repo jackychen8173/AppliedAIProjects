@@ -121,7 +121,6 @@ Hyperparameter tuning was performed using GridSearchCV with F1-score as the prim
 | Decision Tree | 0.818 | 0.818 | 0.818 | 0.802 |
 | Random Forest | 0.765 | 0.788 | 0.776 | 0.859 |
 | Tuned Random Forest | 0.788 | 0.788 | 0.788 | 0.867 |
-| Tuned Logistic Regression | 0.784 | 0.879 | 0.829 | 0.881 |
 
 **Visualizations included:**  
 
@@ -151,6 +150,6 @@ Hyperparameter tuning was performed using GridSearchCV with F1-score as the prim
 
 ## 👥 Team Member Contributions  
 
-**Jacky Chen:**
+**Jacky Chen:** Data preprocessing, Exploratory data analysis, feature engineering, report writing
 
-**Henry Chen:** 
+**Henry Chen:** Data preprocessing, feature engineering, model implementation, results analysis
