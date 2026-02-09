@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import confusion_matrix
+import os
 
 CLASS_NAMES = [
     "T-shirt", "Trouser", "Pullover", "Dress", "Coat",
@@ -54,6 +55,7 @@ def cost_weighted_accuracy(y_true, y_pred, cost_matrix):
 
 
 def plot_training_curves(train_losses, val_accuracies, save_path):
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
     epochs = range(1, len(train_losses) + 1)
 
     plt.figure(figsize=(10, 4))

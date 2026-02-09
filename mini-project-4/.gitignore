@@ -1,0 +1,19 @@
+# Data (downloaded datasets)
+data/
+datasets/
+*.pt
+*.pth
+
+# Results (optional – keep if you want figures tracked)
+# results/
+
+# Jupyter junk
+.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
