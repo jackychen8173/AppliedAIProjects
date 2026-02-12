@@ -145,9 +145,10 @@ mini-project-4/
 
 ## 👥 Team Contributions
 
-**Jacky**:
+**Jacky**: Implemented core project structure (model.py, train.py, utils.py), Developed and trained neural network models in PyTorch, 
+Designed training pipeline and evaluation workflow, Contributed to technical analysis and interpretation, Wrote final report
 
-**Alex**:
+**Alex**: Conducted model architecture selection and comparison, Generated visualizations (training curves, images, results), Performed results analysis and interpretation, Created project documentation (README), Contributed to experimental evaluation and validation
 
 ---
 
