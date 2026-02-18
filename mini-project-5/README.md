@@ -40,6 +40,14 @@ run .ipynb files with a created python environment.
 ![Training Curves](results/improved_model_curves.png)
 ![Training Curves](results/experiment_model_curves.png)
 
+#### Confusion Matrices
+
+![Confusion Matrix](results/Baseline_confusion_matrix.png)
+
+![Confusion Matrix](results/Improved_confusion_matrix.png)
+
+![Confusion Matrix](results/Experiment_confusion_matrix.png)
+
 #### Learned Filters
 
 ![Learned Filters](results/learned_filters.png)
