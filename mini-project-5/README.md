@@ -60,9 +60,8 @@ run .ipynb files with a created python environment.
 ## Team Member Contributions
 Group 10
 
-Jacky Chen: Learning Hub Report
+Jacky Chen: Implemented the baseline CNN model and performed data exploration and preprocessing. Developed the improved (augmented) CNN model and authored the Learning Hub report, including methodology, results, and discussion.
 
-Jun Park: README.md
+Jun Park: Worked on the augmented CNN model, conducted model comparison and analysis, created visualizations (training curves, confusion matrices, CNN internals), implemented the experiment (GAP) model, and wrote the README.md file.
 
-Together: cnn_classifier.ipynb
-
+Together: Both members collaborated on cnn_classifier.ipynb, debugging, testing models, and ensuring reproducibility of the project.
