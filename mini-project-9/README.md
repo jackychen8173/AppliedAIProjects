@@ -2,8 +2,8 @@
 **COMP 9130 — Applied Artificial Intelligence**
 
 ## Team Members
-- [Your Name]
-- [Partner Name]
+- Jacky Chen
+- Alex Liu
 
 ---
 
@@ -250,14 +250,28 @@ Therefore:
 
 ## Team Contributions
 
-**[Your Name]:**
-- [Your specific contributions]
+**Jacky Chen:**
+- Implemented DistilBERT fine-tuning pipeline with PyTorch training loop
+- Designed and executed hyperparameter optimization experiments (learning rate, epochs, warmup tuning)
+- Developed dual-strategy class imbalance handling (5× oversampling + weighted loss)
+- Conducted error analysis and categorized failure modes
+- Designed production deployment workflow with three-tier moderation system
+- Wrote technical report sections: Methodology, Results, Error Analysis
 
-**[Partner Name]:**
-- [Partner's specific contributions]
+**Alex Liu:**
+- Built TF-IDF + Logistic Regression baseline with GridSearchCV
+- Performed exploratory data analysis and created visualizations
+- Implemented data preprocessing pipelines (basic and aggressive cleaning)
+- Generated confusion matrices, confidence analysis, and training curve plots
+- Developed stratified train/validation/test splitting strategy
+- Wrote technical report sections: Introduction, Data Analysis, References
 
 **Collaborative work:**
-- [What you did together]
+- Dataset selection and initial exploration of Davidson et al. (2017) Twitter dataset
+- Model evaluation strategy and metrics selection (macro F1, per-class performance)
+- Production workflow cost-benefit analysis and ROI calculations
+- Final report editing, proofreading, and integration of results
+- Presentation preparation and demo notebook testing
 
 ---
 
@@ -268,6 +282,3 @@ Therefore:
 - Davidson et al. for the hate speech dataset
 
 ---
-
-**Contact:** [your emails]  
-**Submission Date:** [date]
