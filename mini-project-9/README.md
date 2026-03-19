@@ -97,37 +97,36 @@ notebooks/03_transformer.ipynb
 
 | Metric | TF-IDF Baseline | DistilBERT | Improvement |
 |--------|-----------------|------------|-------------|
-| **Accuracy** | [X.XX] | [X.XX] | [+X.X%] |
-| **F1 (macro)** | [X.XX] | [X.XX] | [+X.X%] |
-| **F1 (weighted)** | [X.XX] | [X.XX] | [+X.X%] |
+| **Accuracy** | 0.8539 | 0.9045 | +0.051 |
+| **F1 (macro)** | 0.7197 | 0.7755 | +0.056 |
+| **F1 (weighted)** | 0.8690 | 0.9098 | +0.041 |
 
 ### Per-Class Performance (DistilBERT)
 
 | Class | Precision | Recall | F1-Score | Support |
 |-------|-----------|--------|----------|---------|
-| Hate speech | [X.XX] | [X.XX] | [X.XX] | [XXX] |
-| Offensive | [X.XX] | [X.XX] | [X.XX] | [XXXX] |
-| Neither | [X.XX] | [X.XX] | [X.XX] | [XXX] |
+| Hate speech | 0.4192 | 0.5825 | 0.4875 | 285 |
+| Offensive | 0.9639 | 0.9260 | 0.9446 | 3837 |
+| Neither | 0.8739 | 0.9159 | 0.8944 | 832 |
 
 ### Key Findings
 
 **Strengths:**
-- [e.g., DistilBERT significantly outperforms TF-IDF on minority class (hate speech)]
-- [e.g., Handles slang and misspellings better than TF-IDF]
+- DistilBERT improves hate speech F1 from 0.4085 to 0.4875 over TF-IDF
+- Better handles noisy tweet language — offensive F1 improved from 0.9092 to 0.9446
 
 **Weaknesses:**
-- [e.g., Still confuses hate speech with offensive language in X% of cases]
-- [e.g., Struggles with sarcasm and context-dependent meaning]
+- Hate speech still has 41.75% error rate — minority class remains the hardest
+- Model reacts to slurs as keywords without understanding intent or context
 
 **Production Recommendations:**
-- Confidence threshold: [X.XX] for auto-moderation
-- Expected human review: [X%] of posts
+- Confidence threshold: 0.90 for auto-moderation of hate speech
+- Expected human review: ~5% of posts
 - Priority: Minimize false negatives (missing hate speech) over false positives
 
 ---
 
 ## Project Structure
-
 ```
 mini-project-9/
 ├── README.md                      # This file
@@ -164,11 +163,11 @@ mini-project-9/
 ### 3. Transformer Fine-Tuning
 - Model: DistilBERT-base-uncased (66M parameters)
 - Tokenization: Max length 128 tokens
-- **Class imbalance handling**: Weighted CrossEntropyLoss
+- **Class imbalance handling**: Oversampling (hate speech to 6x original) + Weighted CrossEntropyLoss
 - Hyperparameters:
-  - Learning rate: 3e-5
+  - Learning rate: 2e-5
   - Batch size: 16
-  - Epochs: 4
+  - Epochs: 3
   - Optimizer: AdamW with linear warmup
 - Training: Manual PyTorch loop with gradient clipping
 
@@ -178,31 +177,35 @@ mini-project-9/
 
 ### Common Failure Patterns
 
-1. **Sarcasm/Irony** ([X]% of errors)
-   - Example: [quote a misclassified tweet]
-   
-2. **Context-dependent language** ([X]% of errors)
-   - Example: [quote a misclassified tweet]
+1. **Slang/keyword triggering** — most common pattern
+   - Example: "@BigD757 too bad hes a faggot" — slur used as casual insult,
+     predicted Hate but labeled Offensive
 
-3. **Hate vs Offensive confusion** ([X]% of errors)
-   - Example: [quote a misclassified tweet]
+2. **Context-dependent language** — second most common
+   - Example: "Damn it be cold fo a colored man" — self-referential use of
+     racial term, predicted Hate but labeled Neither
 
-4. **Annotation disagreement** ([X]% of errors)
-   - Example: [tweets that seem mislabeled in ground truth]
+3. **Annotation disagreement** — several examples appear mislabeled
+   - Example: "i hate hoes." — labeled Hate but model predicted Offensive,
+     gender-based language with ambiguous protected characteristic status
+
+4. **Sarcasm/irony** — least common but hardest to fix
+   - Example: "National Review calls #gay marriage 'lawlessness'" — reporting
+     on opinion predicted as Hate, model cannot distinguish reporting from endorsing
 
 ---
 
 ## Production Workflow Design
 
 ### Confidence Thresholds
-- **Auto-removal** (hate speech): Confidence ≥ [X.XX]
-- **Auto-approval** (neither): Confidence ≥ [X.XX]
-- **Human review**: Confidence < [X.XX] or borderline cases
+- **Auto-removal** (hate speech): Confidence ≥ 0.90
+- **Auto-approval** (neither): Confidence ≥ 0.75
+- **Human review**: Confidence < 0.90 or borderline cases
 
 ### Scalability
 At 100K posts/day:
-- **Auto-moderated**: [X]% = [XX,XXX] posts/day
-- **Human review**: [X]% = [X,XXX] posts/day
+- **Auto-moderated**: ~95% = 95,000 posts/day
+- **Human review**: ~5% = 5,000 posts/day
 
 ### Error Cost Analysis
 False negatives (missing hate speech) are MORE costly because:
